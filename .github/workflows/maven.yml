@@ -20,12 +20,8 @@ jobs:
       - name: Build with Maven
         run: mvn package 
 
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Upload JAR to GitHub Packages
-        uses: actions/upload-artifact@v2
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
         with:
-          name: spring-rest-hello-world.jar
+          name: app-release
           path: /home/runner/work/spring-rest-hello-choreo/spring-rest-hello-choreo/target/spring-rest-hello-world.jar
