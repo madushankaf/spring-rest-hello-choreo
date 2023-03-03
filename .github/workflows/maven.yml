@@ -27,5 +27,5 @@ jobs:
       - name: Upload JAR to GitHub Packages
         uses: actions/upload-artifact@v2
         with:
-          name: spring-rest-hello-world-${{ github.sha }}
+          name: spring-rest-hello-world.jar
           path: target/spring-rest-hello-world.jar
