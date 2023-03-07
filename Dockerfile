@@ -12,12 +12,14 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 USER 10001
+
+RUN ls -la /app
 # Copy the compiled JAR file to the container
-COPY target/spring-rest-hello-world-1.0.jar spring-rest-hello-world.jar
+COPY --from=0 "/app/target/spring-rest-hello-world-1.0.jar" spring-rest-hello-world.jar
 
 # Expose the port that the API will listen on
 EXPOSE 9091
 
 # Start the Spring Boot application when the container starts
 CMD ["java", "-jar", "-Dserver.address=0.0.0.0", "-Dserver.port=9091",  "spring-rest-hello-world.jar"]
-    
+
