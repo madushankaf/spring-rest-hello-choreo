@@ -8,6 +8,11 @@ RUN mvn -B -s /usr/share/maven/ref/settings-docker.xml package -DskipTests
 # Use an OpenJDK 11 runtime as the base image
 FROM openjdk:11-jre-slim
 
+RUN apk add --upgrade libtasn1-progs
+
+# https://security.alpinelinux.org/vuln/CVE-2022-37434
+RUN apk update && apk upgrade zlib
+
 # Set the working directory in the container
 WORKDIR /app
 
