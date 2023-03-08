@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.2.RELEASE</version>
+        <version>2.4.0</version>
         <relativePath/> <!-- relative path is not needed if the parent is defined in the repository -->
     </parent>
 
@@ -40,17 +40,10 @@
         </dependency>
 
         <!-- in-memory database  -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
+
 
         <!-- unit test rest -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+      
 
         <!-- test patch operation need this -->
         <dependency>
@@ -60,12 +53,20 @@
             <scope>test</scope>
         </dependency>
 
+
+
         <!-- hot swapping, disable cache for template, enable live reload -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-beans</artifactId>
+    <version>5.3.18</version>
+</dependency>
 
     </dependencies>
 

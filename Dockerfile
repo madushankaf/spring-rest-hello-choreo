@@ -1,6 +1,7 @@
 FROM maven:3.8.3-openjdk-11-slim AS build
 WORKDIR /app
 COPY pom.xml .
+COPY .trivyignore .
 RUN mvn -B -f pom.xml -s /usr/share/maven/ref/settings-docker.xml dependency:resolve
 COPY src/ /app/src/
 RUN mvn -B -s /usr/share/maven/ref/settings-docker.xml package -DskipTests
@@ -8,10 +9,6 @@ RUN mvn -B -s /usr/share/maven/ref/settings-docker.xml package -DskipTests
 # Use an OpenJDK 11 runtime as the base image
 FROM openjdk:11-jre-slim
 
-RUN apk add --upgrade libtasn1-progs
-
-# https://security.alpinelinux.org/vuln/CVE-2022-37434
-RUN apk update && apk upgrade zlib
 
 # Set the working directory in the container
 WORKDIR /app
